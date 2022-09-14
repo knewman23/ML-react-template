@@ -1,0 +1,60 @@
+{
+    "coefficients": [
+        [
+            -2.6962855787901074,
+            0.3802454239156675,
+            -0.10895714824412128,
+            0.17781439276819672,
+            -1.0167886435664486,
+            0.08415193500793824
+        ]
+    ],
+    "typeValues": [
+        0,
+        1
+    ],
+    "paintPointValues": [
+        4,
+        0,
+        1,
+        3,
+        2
+    ],
+    "qualityRankingValues": [
+        1,
+        0
+    ],
+    "termNoteValues": [
+        4,
+        3,
+        0,
+        1,
+        2
+    ],
+    "toneValues": [
+        2,
+        3,
+        0,
+        1
+    ],
+    "voiceValues": [
+        1,
+        0,
+        3,
+        2
+    ],
+    "readerEaseValues": [
+        1,
+        2,
+        0
+    ],
+    "recessionEaseValues": [
+        0,
+        1
+    ],
+    "mutinyPersonalizationValues": [
+        1,
+        0
+    ],
+    "regressionScore": 0.5516127464544045
+}

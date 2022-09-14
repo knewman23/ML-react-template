@@ -3,3 +3,5 @@
 /lib
 
 .Python
+.pyc
+__pycache__

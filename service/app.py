@@ -3,7 +3,8 @@ from flask_restplus import Api, Resource, fields
 import joblib
 import numpy as np
 from flask_cors import CORS
-from sklearn import preprocessing
+import pandas as pd
+import json
 
 flask_app = Flask(__name__)
 CORS(flask_app)
@@ -32,13 +33,33 @@ model = app.model('Prediction params',
     					  				 	help="Select 3 cannot be blank")})
 
 classifier = joblib.load('classifier.joblib')
+fb_ad_classifier = joblib.load('fb_ad_classifier.joblib')
 
-@name_space.route("/")
+@name_space.route("/", methods=['GET', 'POST'])
 class MainClass(Resource):
 
 	def options(self):
 		response = make_response()
 		response.headers.add("Access-Control-Allow-Origin", "*")
+		response.headers.add('Access-Control-Allow-Headers', "*")
+		response.headers.add('Access-Control-Allow-Methods', "*")
+		return response
+
+	def get(self):
+		data = pd.read_excel('./data/fb_ad_data.xlsx')
+		json_data = data.to_json(orient="records")
+		parsed = json.loads(json_data)
+		json.dumps(parsed, indent=4)
+		
+		with open("model_stats.json", "r") as openfile:
+			json_stats = json.load(openfile)
+
+		response = jsonify({
+				"statusCode": 200,
+				"data": parsed,
+				"stats": json_stats
+				})
+		response.headers.add('Access-Control-Allow-Origin', '*')
 		response.headers.add('Access-Control-Allow-Headers', "*")
 		response.headers.add('Access-Control-Allow-Methods', "*")
 		return response
